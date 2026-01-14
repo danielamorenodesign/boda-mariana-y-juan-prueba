@@ -212,8 +212,8 @@ if (foodRestriction === "yes") {
       : `Cancelación de asistencia: ${currentPerson.name}`;
   
       const body = attending
-      ? `Hola Mariana y Juan, Mi nombre es ${currentPerson.name} y confirmo asistencia con ${selectedTickets} boleto(s).%0D%0ARestricción alimentaria: ${foodRestriction === "yes" ? comment : "Ninguna" }`
-      : `Hola Mariana y Juan, Mi nombre es ${currentPerson.name} y no podré asistir. Mi restricción alimentaria: ${foodRestriction === "yes" ? comment : "Ninguna" }`;
+      ? `Hola Mariana y Juan, Mi nombre es ${currentPerson.name} y confirmo asistencia con ${selectedTickets} boleto(s). Mi restricción alimentaria es: ${foodRestriction === "yes" ? comment : "Ninguna" }`
+      : `Hola Mariana y Juan, Mi nombre es ${currentPerson.name} y no podré asistir. Mi restricción alimentaria es: ${foodRestriction === "yes" ? comment : "Ninguna" }`;
   
 
   // Abrir el cliente de correo
