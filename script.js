@@ -206,14 +206,14 @@ if (foodRestriction === "yes") {
     comment = document.getElementById("comment").value;
 }
 
-  const email = "danielamoreno.design@gmail.com"; // <-- cambia esto al correo real
+  const email = "mariana.juan.boda@gmail.com"; // <-- cambia esto al correo real
   const subject = attending
       ? `Confirmación de asistencia: ${currentPerson.name}`
       : `Cancelación de asistencia: ${currentPerson.name}`;
   
       const body = attending
-      ? `Hola,%0D%0A%0D%0AMi nombre es ${currentPerson.name} y confirmo asistencia con ${selectedTickets} boleto(s).%0D%0ARestricción alimentaria: ${foodRestriction === "yes" ? comment : "Ninguna" }`
-      : `Hola,%0D%0A%0D%0AMi nombre es ${currentPerson.name} y no podré asistir.%0D%0ARestricción alimentaria: ${foodRestriction === "yes" ? comment : "Ninguna" }`;
+      ? `Hola Mariana y Juan, Mi nombre es ${currentPerson.name} y confirmo asistencia con ${selectedTickets} boleto(s).%0D%0ARestricción alimentaria: ${foodRestriction === "yes" ? comment : "Ninguna" }`
+      : `Hola Mariana y Juan, Mi nombre es ${currentPerson.name} y no podré asistir. Mi restricción alimentaria: ${foodRestriction === "yes" ? comment : "Ninguna" }`;
   
 
   // Abrir el cliente de correo
