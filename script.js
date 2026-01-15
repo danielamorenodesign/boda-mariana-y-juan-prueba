@@ -289,4 +289,138 @@ hamburger.addEventListener("click", () => {
   nav.classList.toggle("active");
 });
   
-/* fin menú hamburgeusa */
+/* fin menú hamburguesa */
+
+
+/* carrusel de imagenes */
+
+const track = document.querySelector('.carousel-track');
+  const btnLeft = document.querySelector('.arrow.left');
+  const btnRight = document.querySelector('.arrow.right');
+  const dotsContainer = document.querySelector('.dots');
+
+  const visibleImages = 3;
+  let images = Array.from(track.children);
+  const totalImages = images.length;
+
+  let index = 0;
+  let isTransitioning = false;
+
+  /* ==============================
+     CLONAR IMÁGENES
+  ============================== */
+  
+  for (let i = 0; i < visibleImages; i++) {
+    const clone = images[i].cloneNode(true);
+    clone.classList.add('clone');
+    track.appendChild(clone);
+  }
+
+  images = Array.from(track.children);
+
+  function getImageWidth() {
+    const img = images[0];
+    const gap = parseInt(getComputedStyle(track).gap) || 0;
+    return img.offsetWidth + gap;
+  }
+
+  const maxIndex = totalImages;
+
+  /* ==============================
+   DOTS (CLICKABLES)
+============================== */
+dotsContainer.innerHTML = '';
+
+for (let i = 0; i < totalImages; i++) {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+
+  dot.addEventListener('click', () => {
+    index = i;
+    moveToIndex();
+    resetAutoplay();
+  });
+
+  dotsContainer.appendChild(dot);
+}
+
+const dots = document.querySelectorAll('.dot');
+
+function updateDots() {
+  const activeIndex = index % totalImages;
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeIndex);
+  });
+}
+
+  /* ==============================
+     MOVIMIENTO
+  ============================== */
+  function moveToIndex() {
+    const moveX = getImageWidth() * index;
+    track.style.transition = 'transform 0.4s ease';
+    track.style.transform = `translateX(-${moveX}px)`;
+    updateDots();
+  }
+
+  track.addEventListener('transitionend', () => {
+    if (index >= totalImages) {
+      track.style.transition = 'none';
+      index = 0;
+      track.style.transform = `translateX(0px)`;
+      updateDots();
+    }
+  });
+
+  /* ==============================
+     CONTROLES
+  ============================== */
+  btnRight.addEventListener('click', () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    index++;
+    moveToIndex();
+    setTimeout(() => isTransitioning = false, 400);
+  });
+
+  btnLeft.addEventListener('click', () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    index--;
+    if (index < 0) {
+      track.style.transition = 'none';
+      index = totalImages - 1;
+      track.style.transform =
+        `translateX(-${getImageWidth() * index}px)`;
+      requestAnimationFrame(() => moveToIndex());
+    } else {
+      moveToIndex();
+    }
+    setTimeout(() => isTransitioning = false, 400);
+  });
+
+  /* ==============================
+     AUTOPLAY INFINITO
+  ============================== */
+  let autoplay = setInterval(() => {
+    index++;
+    moveToIndex();
+  }, 3000);
+
+  /* Pausar al hover */
+  track.parentElement.addEventListener('mouseenter', () => {
+    clearInterval(autoplay);
+  });
+
+  track.parentElement.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => {
+      index++;
+      moveToIndex();
+    }, 3000);
+  });
+
+  window.addEventListener('resize', moveToIndex);
+
+
+/* carrusel de imagenes */
