@@ -237,7 +237,7 @@ if (foodRestriction === "yes") {
 
 /* inicio contador */
 
-const fechaObjetivo = new Date("April 18, 2026 00:00:00").getTime();
+const fechaObjetivo = new Date("2026-04-18T17:30:00").getTime();
 
 function actualizarContador() {
     const ahora = new Date().getTime();
