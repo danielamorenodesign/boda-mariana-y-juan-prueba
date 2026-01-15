@@ -876,6 +876,34 @@ input, select {
 
 
 
+/* Botón scroll to top */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #E07A3F; /* naranja similar al diseño */
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+}
+
+/* Hover / tap */
+#scrollTopBtn:active {
+  transform: scale(0.95);
+}
+
+
+
+
 
 
 
@@ -1066,6 +1094,11 @@ input, select {
 
   .nav a {
     padding: 0;
+  }
+
+
+  #scrollTopBtn {
+    display: none !important;
   }
 }
   
