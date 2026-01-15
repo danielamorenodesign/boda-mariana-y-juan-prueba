@@ -134,11 +134,16 @@ html {
     
   }
 
-  .estrella img
+  .estrella imgs
   {
     width: 160px;
     margin-left: 120px;
     margin-top: 50px;
+  }
+
+  .horarios {
+    display: flex;
+    justify-content: center;
   }
 
 
@@ -539,6 +544,8 @@ html {
 }
 
 
+
+
 /* Fin mesa */
 
 
@@ -907,6 +914,12 @@ input, select {
       border-radius: 100px;
       cursor: pointer;
       display: flex;
+    
+  }
+
+  .horarios img {
+
+    width: 360px;
     
   }
   
